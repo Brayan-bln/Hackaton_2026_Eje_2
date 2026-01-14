@@ -193,32 +193,7 @@ body {
 .luz-amarilla:hover, .luz-amarilla.encendida { background: var(--amarillo); box-shadow: 0 0 30px var(--amarillo); }
 .luz-roja:hover, .luz-roja.encendida { background: var(--rojo); box-shadow: 0 0 30px var(--rojo); }
 
-/* estilo del agente (nuevo) */
-.panel-chat-ia {
-  flex: 1;                /* Ocupa el espacio disponible */
-  min-width: 280px;       /* No se hace más pequeño que esto */
-  max-width: 400px;
-  
-  /* Diseño glassmorphism */
-  background: rgba(30, 41, 59, 0.6);
-  backdrop-filter: blur(10px);
-  padding: 1.5rem;
-  border-radius: 20px;
-  border-bottom-left-radius: 4px; /* Estilo burbuja de chat */
-  border: 1px solid rgba(255,255,255,0.1);
-  position: relative;
-  animation: flotar 4s ease-in-out infinite;
-}
 
-/* Triángulo del chat */
-.panel-chat-ia::before {
-  content: '';
-  position: absolute;
-  left: -10px; bottom: 0;
-  border-width: 10px 10px 10px 0;
-  border-style: solid;
-  border-color: transparent rgba(30, 41, 59, 0.6) transparent transparent;
-}
 
 /* Animación de los 3 puntos  */
 .escribiendo {
