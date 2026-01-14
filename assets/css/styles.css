@@ -1,0 +1,299 @@
+/* 1. Variables*/
+:root {
+  /* Fondos */
+  --bg-body: #0f172a;       /* Azul oscuro */
+  --bg-card: #1e293b;       /* Gris azulado para tarjetas */
+  --bg-glass: rgba(30, 41, 59, 0.7); /* Para efecto vidrio */
+
+  /* Textos */
+  --text-main: #f1f5f9;     /* Blanco */
+  --text-muted: #94a3b8;    /* Gris tenue */
+  
+    /* Colores principales */
+  --color-accent: #3b82f6;  /* Azul */
+  --color-border: #334155;  /* Bordes */
+
+  /* Semáforo */
+  --verde: #10b981;
+  --amarillo: #fbbf24;
+  --rojo: #ef4444;
+
+  /* Efectos */
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.2);
+  --radius: 16px;
+}
+/* 2. Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* Contenedor centralizado para todo */
+.contenedor-encabezado, 
+.contenedor-seccion, 
+.contenedor-pie {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+/* Encabezado principal */
+#encabezado-principal {
+  text-align: center;
+  padding: 4rem 0;
+  background: radial-gradient(circle at top, #1e293b, var(--bg-body));
+  border-bottom: 1px solid var(--color-border);
+}
+
+#titulo-proyecto {
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Se adapta al tamaño de pantalla */
+  font-weight: 800;
+  margin-bottom: 1rem;
+  /* Efecto de texto degradado */
+  background: linear-gradient(to right, #4ade80, var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+#descripcion-proyecto {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+.etiquetas-proyecto {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.etiqueta {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: var(--color-accent);
+}
+
+/* Secciones */
+.titulo-seccion {
+  font-size: 1.8rem;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--verde);
+  padding-left: 15px;
+}
+
+.texto-seccion {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.lista-problemas, .lista-beneficios {
+  list-style: none;
+  margin-left: 1rem;
+}
+.lista-problemas li { margin-bottom: 10px; border-left: 2px solid var(--rojo); padding-left: 10px; }
+.lista-beneficios li { margin-bottom: 10px; border-left: 2px solid var(--verde); padding-left: 10px; }
+
+/* tarjetas de soluciones */
+
+.tarjetas-solucion {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.tarjeta {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.tarjeta h3 { color: var(--text-main); margin-bottom: 0.5rem; }
+.tarjeta p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* Semáforo y agente */
+#contenedor-semaforo {
+  display: flex;
+  justify-content: center; /* Centrado Horizontal */
+  align-items: center;     /* Centrado Vertical */
+  gap: 3rem;               /* Espacio entre semáforo y chat */
+  flex-wrap: wrap;         /* Si no caben, se bajan (Responsive) */
+  
+  background: rgba(255, 255, 255, 0.03);
+  padding: 3rem;
+  border-radius: 24px;
+  border: 1px solid var(--color-border);
+  margin: 2rem 0;
+}
+
+/* Estilos del semáforo*/
+#semaforo-cliente {
+  background-color: #000;
+  padding: 20px;
+  border-radius: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border: 4px solid #334155;
+  transition: transform 0.3s;
+}
+
+#semaforo-cliente:hover {
+  transform: scale(1.05); /* Efecto al pasar mouse */
+}
+
+.luz-semaforo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #222;  /* Luz apagada */
+  position: relative;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto reflejo cristal de la luz */
+.luz-semaforo::after {
+  content: '';
+  position: absolute;
+  top: 10px; left: 15px; width: 15px; height: 15px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+}
+
+/* Clases para encender luces (Hover para demo) */
+.luz-verde:hover, .luz-verde.encendida { background: var(--verde); box-shadow: 0 0 30px var(--verde); }
+.luz-amarilla:hover, .luz-amarilla.encendida { background: var(--amarillo); box-shadow: 0 0 30px var(--amarillo); }
+.luz-roja:hover, .luz-roja.encendida { background: var(--rojo); box-shadow: 0 0 30px var(--rojo); }
+
+/* estilo del agente (nuevo) */
+.panel-chat-ia {
+  flex: 1;                /* Ocupa el espacio disponible */
+  min-width: 280px;       /* No se hace más pequeño que esto */
+  max-width: 400px;
+  
+  /* Diseño glassmorphism */
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 20px;
+  border-bottom-left-radius: 4px; /* Estilo burbuja de chat */
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  animation: flotar 4s ease-in-out infinite;
+}
+
+/* Triángulo del chat */
+.panel-chat-ia::before {
+  content: '';
+  position: absolute;
+  left: -10px; bottom: 0;
+  border-width: 10px 10px 10px 0;
+  border-style: solid;
+  border-color: transparent rgba(30, 41, 59, 0.6) transparent transparent;
+}
+
+/* Animación de los 3 puntos  */
+.escribiendo {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.dot {
+  width: 8px; height: 8px;
+  background-color: var(--text-muted);
+  border-radius: 50%;
+  animation: salto 1.4s infinite ease-in-out both;
+}
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+
+.mensaje-texto {
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+.mensaje-texto strong { color: var(--color-accent); }
+
+/* Texto de estado debajo del semáforo */
+#texto-estado-cliente {
+  display: none; /* Oculto por defecto */
+}
+
+/* Controles y botones */
+.contenedor-botones {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 1rem;
+}
+
+.boton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+}
+.boton:hover { transform: scale(1.05); filter: brightness(1.2); }
+.boton-verde { background: var(--verde); color: #064e3b; }
+.boton-amarillo { background: var(--amarillo); color: #78350f; }
+.boton-rojo { background: var(--rojo); color: #7f1d1d; }
+
+/* Footer y animaciones keyframes */
+#pie-pagina {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  background: #020617;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+@keyframes salto {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+  40% { transform: scale(1); opacity: 1; background-color: var(--color-accent); }
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* responsivo (móviles) */
+@media (max-width: 768px) {
+  #contenedor-semaforo {
+    flex-direction: column; /* Apilar verticalmente */
+    gap: 2rem;
+  }
+  
+  .panel-chat-ia::before { display: none; } /* Ocultar flecha chat */
+  .panel-chat-ia { width: 100%; border-bottom-left-radius: 20px; }
+}
