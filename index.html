@@ -2,238 +2,29 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Salud del Cliente · Hackathon</title>
-  
-  <meta name="description" content="Prototipo de detección temprana de clientes en riesgo usando un semáforo y un agente de IA." />
-  <meta name="author" content="Equipo Hackathon" />
-
-  <!-- CSS aquí -->
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <title>Salud del Cliente</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
 
-  <!-- ======================================================
-       ENCABEZADO / PRESENTACIÓN
-  ======================================================= -->
-  <header id="encabezado-principal">
-    <div class="contenedor-encabezado">
-      <h1 id="titulo-proyecto">Salud del Cliente con IA</h1>
+  <h1>Salud del Cliente</h1>
 
-      <p id="descripcion-proyecto">
-        Detección temprana de clientes en riesgo mediante un semáforo
-        inteligente y un agente de inteligencia artificial.
-      </p>
+  <div id="semaforo" class="verde"></div>
+  <p id="estadoTexto">Estado: VERDE</p>
 
-      <div class="etiquetas-proyecto">
-        <span class="etiqueta">Hackathon</span>
-        <span class="etiqueta">Inteligencia Artificial</span>
-        <span class="etiqueta">Retención de Clientes</span>
-        <span class="etiqueta">Prevención</span>
-      </div>
-    </div>
-  </header>
+  <div class="botones">
+    <button onclick="cambiarEstado('verde')">Cliente estable</button>
+    <button onclick="cambiarEstado('amarillo')">Inconformidad leve</button>
+    <button onclick="cambiarEstado('rojo')">Riesgo de cancelación</button>
+  </div>
 
-  <!-- ======================================================
-       CONTEXTO DEL PROBLEMA
-  ======================================================= -->
-  <section id="seccion-problema">
-    <div class="contenedor-seccion">
-      <h2 class="titulo-seccion">El problema</h2>
+  <div class="agente">
+    <h2>Agente de IA</h2>
+    <p id="mensajeIA">
+      El cliente se encuentra estable. No se requiere acción.
+    </p>
+  </div>
 
-      <p class="texto-seccion">
-        La pérdida de clientes casi nunca ocurre de forma repentina.
-        Normalmente existen señales tempranas que no se detectan a tiempo.
-      </p>
-
-      <ul class="lista-problemas">
-        <li>Las métricas se revisan por separado</li>
-        <li>La atención suele ser reactiva</li>
-        <li>El cliente se atiende cuando ya está molesto</li>
-      </ul>
-
-      <p class="texto-destacado">
-        Cuando la empresa reacciona, muchas veces ya es demasiado tarde.
-      </p>
-    </div>
-  </section>
-
-  <!-- ======================================================
-       SOLUCIÓN PROPUESTA
-  ======================================================= -->
-  <section id="seccion-solucion">
-    <div class="contenedor-seccion">
-      <h2 class="titulo-seccion">Nuestra solución</h2>
-
-      <p class="texto-seccion">
-        Diseñamos una herramienta visual que permite identificar el
-        estado del cliente de forma inmediata y actuar antes de la cancelación.
-      </p>
-
-      <div class="tarjetas-solucion">
-        <div class="tarjeta">
-          <h3>Semáforo de salud</h3>
-          <p>
-            Representa el estado del cliente en verde, amarillo o rojo
-            para una lectura rápida y clara.
-          </p>
-        </div>
-
-        <div class="tarjeta">
-          <h3>Agente de IA</h3>
-          <p>
-            Analiza el estado actual y sugiere acciones preventivas
-            para retener al cliente.
-          </p>
-        </div>
-
-        <div class="tarjeta">
-          <h3>Acción oportuna</h3>
-          <p>
-            Permite actuar antes de que el cliente se inconforme
-            o decida cancelar el servicio.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================
-       DEMO / SEMÁFORO
-  ======================================================= -->
-  <section id="seccion-demo">
-    <div class="contenedor-seccion">
-      <h2 class="titulo-seccion">Simulación del estado del cliente</h2>
-
-      <p class="texto-seccion">
-        Esta simulación permite mostrar cómo el sistema responde
-        ante distintos escenarios de comportamiento del cliente.
-      </p>
-
-      <div id="contenedor-semaforo">
-        <div id="semaforo-cliente">
-          <div class="luz-semaforo luz-verde" id="luz-verde"></div>
-          <div class="luz-semaforo luz-amarilla" id="luz-amarilla"></div>
-          <div class="luz-semaforo luz-roja" id="luz-roja"></div>
-        </div>
-
-        <p id="texto-estado-cliente">
-          Estado actual del cliente: <strong>VERDE</strong>
-        </p>
-      </div>
-
-      <!-- CONTROLES -->
-      <div id="controles-simulacion">
-        <h3 class="subtitulo">Simular escenario</h3>
-
-        <div class="contenedor-botones">
-          <button id="btn-estado-verde" class="boton boton-verde">
-            Cliente estable
-          </button>
-
-          <button id="btn-estado-amarillo" class="boton boton-amarillo">
-            Inconformidad leve
-          </button>
-
-          <button id="btn-estado-rojo" class="boton boton-rojo">
-            Riesgo de cancelación
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================
-       AGENTE DE IA
-  ======================================================= -->
-  <section id="seccion-agente-ia">
-    <div class="contenedor-seccion">
-      <h2 class="titulo-seccion">Agente de IA</h2>
-
-      <div class="contenedor-agente">
-        <div class="avatar-agente">
-          <img src="https://via.placeholder.com/120" alt="Agente de IA">
-        </div>
-
-        <div class="mensaje-agente">
-          <p id="estado-agente">
-            El cliente se encuentra estable.
-          </p>
-
-          <p id="detalle-agente">
-            No se detectan señales de riesgo. No se requiere acción inmediata.
-          </p>
-        </div>
-      </div>
-
-      <!-- ACCIONES -->
-      <div id="acciones-recomendadas">
-        <h3 class="subtitulo">Acciones sugeridas</h3>
-
-        <ul class="lista-acciones">
-          <li>
-            <input type="checkbox" id="accion-llamada">
-            <label for="accion-llamada">Cambie estado de cliente</label>
-          </li>
-
-          <li>
-            <input type="checkbox" id="accion-ajuste">
-            <label for="accion-ajuste">Interactuar con el agente IA</label>
-          </li>
-
-          <li>
-            <input type="checkbox" id="accion-seguimiento">
-            <label for="accion-seguimiento">Seguimiento en ese momento</label>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================
-       BENEFICIOS
-  ======================================================= -->
-  <section id="seccion-beneficios">
-    <div class="contenedor-seccion">
-      <h2 class="titulo-seccion">Impacto esperado</h2>
-
-      <ul class="lista-beneficios">
-        <li>Reducción de cancelaciones</li>
-        <li>Mejora en la experiencia del cliente</li>
-        <li>Priorización inteligente de atención</li>
-        <li>Cultura preventiva dentro de la empresa</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ======================================================
-       ALCANCES
-  ======================================================= -->
-  <section id="seccion-alcances">
-    <div class="contenedor-seccion">
-      <h2 class="titulo-seccion">Alcances y límites</h2>
-
-      <p class="texto-seccion">
-        Este prototipo es una simulación conceptual desarrollada
-        para fines de demostración en un hackathon.
-      </p>
-    </div>
-  </section>
-
-  <!-- ======================================================
-       PIE DE PÁGINA
-  ======================================================= -->
-  <footer id="pie-pagina">
-    <div class="contenedor-pie">
-      <p>Hackathon · Fundacion Traxion</p>
-      <p class="nota-pie">Prototipo Visual</p>
-    </div>
-  </footer>
-
-  <!-- JS aquí -->
-  <!-- <script src="logica.js"></script> -->
-
+<script src="script.js"></script>
 </body>
 </html>

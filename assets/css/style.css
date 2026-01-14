@@ -1,0 +1,29 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f4f4f4;
+}
+
+#semaforo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 20px auto;
+}
+
+.verde { background: green; }
+.amarillo { background: orange; }
+.rojo { background: red; }
+
+.botones button {
+  margin: 5px;
+  padding: 10px;
+}
+
+.agente {
+  background: white;
+  margin: 20px auto;
+  padding: 15px;
+  width: 60%;
+  border-radius: 8px;
+}
